@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -14,17 +14,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # 使いたいNode.jsのバージョンを指定
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install
+      run: yarn
 
     - name: Build
-      run: npm run build # ビルドスクリプトを実行。`npm run build`がプロジェクトのビルドコマンドであることを前提としています。
+      run: yarn build
 
   lint:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -32,17 +32,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # 使いたいNode.jsのバージョンを指定
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install
+      run: yarn
 
     - name: Run Lint
-      run: npm run lint # Lintスクリプトを実行。`npm run lint`がプロジェクトのlintコマンドであることを前提としています。
+      run: yarn lint
 
   prettier:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -50,11 +50,14 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # 使いたいNode.jsのバージョンを指定
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install
+      run: yarn
 
     - name: Run Prettier Check
-      run: npx prettier --check . # Prettierでコードのフォーマットをチェックします。
+      run: yarn format
 
+    - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+      with:
+        commit_message: formatted by workflow
