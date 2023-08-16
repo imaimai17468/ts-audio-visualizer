@@ -1,21 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import AudioVisualizer from './AudioVisualizer'
 import styles from './AudioVisualizer.module.css'
 
-const meta: Meta<typeof AudioVisualizer> = {
+export default {
   title: 'components/AudioVisualizer',
   component: AudioVisualizer,
-  tags: ['autodocs'],
-}
+  argTypes: {},
+} as ComponentMeta<typeof AudioVisualizer>
 
-export default meta
-type Story = StoryObj<typeof AudioVisualizer>
+const Template: ComponentStory<typeof AudioVisualizer> = () => (
+  <div className={styles['story-container']}>
+    <AudioVisualizer />
+  </div>
+)
 
-export const Default: Story = {
-  args: {},
-  render: () => (
-    <div className={styles['story-container']}>
-      <AudioVisualizer />
-    </div>
-  ),
-}
+export const Default = Template.bind({})

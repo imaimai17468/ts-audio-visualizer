@@ -1,19 +1,19 @@
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
-const pkg = require('./package.json')
+import postcss from 'rollup-plugin-postcss'
 
 export default [
   {
     input: 'src/index.ts',
     output: [
       {
-        file: pkg.main,
+        file: 'dist/cjs/index.js',
         format: 'cjs',
         sourcemap: false,
       },
       {
-        file: pkg.module,
+        file: 'dist/esm/index.js',
         format: 'esm',
         sourcemap: false,
       },
@@ -25,6 +25,10 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
         exclude: ['**/__tests__/**'],
+      }),
+      postcss({
+        extensions: ['.css', '.sass', '.scss'],
+        inject: false,
       }),
     ],
     external: ['react', 'react-dom', '@emotion/styled', '@emotion/react'],
