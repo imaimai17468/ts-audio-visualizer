@@ -39,25 +39,3 @@ jobs:
 
     - name: Run Lint
       run: yarn lint
-
-  prettier:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-
-    - name: Install dependencies
-      run: yarn
-
-    - name: Run Prettier Check
-      run: yarn format
-
-    - uses: stefanzweifel/git-auto-commit-action@v3.0.0
-      with:
-        commit_message: formatted by workflow
