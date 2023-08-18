@@ -11,3 +11,12 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+.story-container-full {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

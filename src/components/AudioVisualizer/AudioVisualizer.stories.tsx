@@ -1,18 +1,31 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import AudioVisualizer from './AudioVisualizer'
 import styles from './AudioVisualizer.module.css'
 
-export default {
-  title: 'components/AudioVisualizer',
+const meta: Meta<typeof AudioVisualizer> = {
+  title: 'common/AudioVisualizer',
   component: AudioVisualizer,
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof AudioVisualizer>
+}
+export default meta
+type Story = StoryObj<typeof AudioVisualizer>
 
-const Template: ComponentStory<typeof AudioVisualizer> = () => (
-  <div className={styles['story-container']}>
-    <AudioVisualizer />
-  </div>
-)
+export const Default: Story = {
+  args: {},
+  render: () => (
+    <div className={styles['story-container-full']}>
+      <AudioVisualizer />
+    </div>
+  ),
+}
 
-export const Default = Template.bind({})
+export const FixedWidth: Story = {
+  args: {},
+  render: () => (
+    <div className={styles['story-container']}>
+      <AudioVisualizer />
+    </div>
+  ),
+}
