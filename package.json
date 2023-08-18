@@ -6,21 +6,22 @@
   "author": "[author]",
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
     "@rollup/plugin-typescript": "8.3.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^4.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.17.4",
     "@rollup/plugin-commonjs": "^21.0.1",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-interactions": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "@storybook/testing-library": "^0.0.9",
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-interactions": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.3.2",
+    "@storybook/react": "^7.3.2",
+    "@storybook/react-vite": "^7.3.2",
+    "@storybook/testing-library": "^0.2.0",
     "@types/css-modules": "^1.0.2",
     "@types/react": "^17.0.39",
     "@typescript-eslint/parser": "^6.4.0",
@@ -28,20 +29,23 @@
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-storybook": "^0.6.13",
     "postcss": "^8.4.28",
     "postcss-loader": "^7.3.3",
     "prettier": "^2.5.1",
     "rollup": "^2.67.2",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "storybook": "^7.3.2",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "peerDependencies": {
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.6.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "files": [
     "package.json",
@@ -54,7 +58,7 @@
     "build": "rollup -c",
     "lint": "eslint --ext ts,tsx .",
     "format": "prettier --write .",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   }
 }
