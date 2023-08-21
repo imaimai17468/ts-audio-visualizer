@@ -7,25 +7,35 @@ const meta: Meta<typeof AudioVisualizer> = {
   title: 'common/AudioVisualizer',
   component: AudioVisualizer,
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    bgColor: {
+      control: 'color',
+    },
+    barColor: {
+      control: 'color',
+    },
+  }
 }
 export default meta
 type Story = StoryObj<typeof AudioVisualizer>
 
 export const Default: Story = {
-  args: {},
-  render: () => (
+  args: {
+    bgColor: '#fff',
+    barColor: '#000'
+  },
+  render: ({bgColor, barColor}) => (
     <div className={styles['story-container-full']}>
-      <AudioVisualizer />
+      <AudioVisualizer bgColor={bgColor} barColor={barColor} />
     </div>
   ),
 }
 
 export const FixedWidth: Story = {
   args: {},
-  render: () => (
+  render: ({ bgColor, barColor }) => (
     <div className={styles['story-container']}>
-      <AudioVisualizer />
+      <AudioVisualizer bgColor={bgColor} barColor={barColor} />
     </div>
   ),
 }

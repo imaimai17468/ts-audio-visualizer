@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './AudioVisualizer.module.css'
+import { AudioVisualizerProps } from './AudioVisualizer.types'
 
-const AudioVisualizer = () => {
+const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
+  bgColor = '#fff',
+  barColor = '#000'
+}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -33,7 +37,7 @@ const AudioVisualizer = () => {
         draw(analyser)
       })
       .catch((err) => console.log('The following error occurred: ' + err))
-  }, [])
+  }, [bgColor, barColor])
 
   const draw = (analyser: AnalyserNode) => {
     if (canvasRef.current) {
@@ -46,7 +50,8 @@ const AudioVisualizer = () => {
         const width = canvas.width
         const height = canvas.height
 
-        ctx.clearRect(0, 0, width, height)
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, width, height)
 
         const barWidth = width / frequencyData.length
         let barHeight
@@ -55,7 +60,7 @@ const AudioVisualizer = () => {
         for (let i = 0; i < frequencyData.length; i++) {
           barHeight = (frequencyData[i] / 255) * height
 
-          ctx.fillStyle = '#233E71'
+          ctx.fillStyle = barColor
           ctx.fillRect(x, height - barHeight, barWidth, barHeight)
 
           x += barWidth
