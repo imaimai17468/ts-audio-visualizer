@@ -4,7 +4,9 @@ import { AudioVisualizerProps } from './AudioVisualizer.types'
 
 const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   bgColor = '#fff',
-  barColor = '#000'
+  barColor = '#000',
+  width = '100%',
+  height = '100%',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -72,7 +74,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   }
 
   return (
-    <div ref={containerRef} className={styles.root}>
+    <div ref={containerRef} className={styles.root} style={{ width, height }}>
       <canvas ref={canvasRef}></canvas>
     </div>
   )

@@ -14,27 +14,45 @@ const meta: Meta<typeof AudioVisualizer> = {
     barColor: {
       control: 'color',
     },
+    width: {
+      control: 'text',
+    },
+    height: {
+      control: 'text',
+    },
   }
 }
 export default meta
 type Story = StoryObj<typeof AudioVisualizer>
 
 export const Default: Story = {
-  args: {
-    bgColor: '#fff',
-    barColor: '#000'
-  },
-  render: ({bgColor, barColor}) => (
+  args: {},
+  render: () => (
     <div className={styles['story-container-full']}>
-      <AudioVisualizer bgColor={bgColor} barColor={barColor} />
+      <AudioVisualizer />
     </div>
   ),
 }
 
 export const FixedWidth: Story = {
-  args: {},
-  render: ({ bgColor, barColor }) => (
+  args: {
+    width: '500px',
+    height: '200px',
+  },
+  render: ({ width, height }) => (
     <div className={styles['story-container']}>
+      <AudioVisualizer width={width} height={height} />
+    </div>
+  ),
+}
+
+export const ChangeColor: Story = {
+  args: {
+    bgColor: '#eeeeee',
+    barColor: '#aaeeaa',
+  },
+  render: ({ bgColor, barColor }) => (
+    <div className={styles['story-container-full']}>
       <AudioVisualizer bgColor={bgColor} barColor={barColor} />
     </div>
   ),
