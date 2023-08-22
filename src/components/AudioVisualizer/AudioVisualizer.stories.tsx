@@ -39,11 +39,6 @@ export const FixedWidth: Story = {
     width: '500px',
     height: '200px',
   },
-  render: ({ width, height }) => (
-    <div className={styles['story-container']}>
-      <AudioVisualizer width={width} height={height} />
-    </div>
-  ),
 }
 
 export const ChangeColor: Story = {
