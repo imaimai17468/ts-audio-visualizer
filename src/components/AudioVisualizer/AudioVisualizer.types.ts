@@ -3,4 +3,5 @@ export type AudioVisualizerProps = {
   barColor?: string;
   width?: string;
   height?: string;
+  barAlign?: 'top' | 'center' | 'bottom';
 }

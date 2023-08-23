@@ -1,7 +1,5 @@
-import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import AudioVisualizer from './AudioVisualizer'
-import styles from './AudioVisualizer.module.css'
 
 const meta: Meta<typeof AudioVisualizer> = {
   title: 'common/AudioVisualizer',
@@ -9,46 +7,36 @@ const meta: Meta<typeof AudioVisualizer> = {
   tags: ['autodocs'],
   argTypes: {
     bgColor: {
+      description: 'Background color of the container',
       control: 'color',
     },
     barColor: {
+      description: 'Color of the bars',
       control: 'color',
     },
     width: {
+      description: 'Width of the container',
       control: 'text',
     },
     height: {
+      description: 'Height of the container',
       control: 'text',
     },
-  }
+    barAlign: {
+      description: 'Align the bars to the top, center, or bottom of the container (default: bottom)',
+      defaultValue: 'bottom',
+      options: ['top', 'center', 'bottom'],
+      control: { type: 'radio' },
+    },
+  },
 }
 export default meta
 type Story = StoryObj<typeof AudioVisualizer>
 
 export const Default: Story = {
-  args: {},
-  render: () => (
-    <div className={styles['story-container-full']}>
-      <AudioVisualizer />
-    </div>
-  ),
-}
-
-export const FixedWidth: Story = {
   args: {
-    width: '500px',
-    height: '200px',
+    height: '100px',
+    width: '100%',
+    barAlign: 'bottom',
   },
-}
-
-export const ChangeColor: Story = {
-  args: {
-    bgColor: '#eeeeee',
-    barColor: '#aaeeaa',
-  },
-  render: ({ bgColor, barColor }) => (
-    <div className={styles['story-container-full']}>
-      <AudioVisualizer bgColor={bgColor} barColor={barColor} />
-    </div>
-  ),
 }

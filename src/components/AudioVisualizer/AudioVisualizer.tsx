@@ -7,6 +7,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   barColor = '#000',
   width = '100%',
   height = '100%',
+  barAlign = 'bottom',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -39,7 +40,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
         draw(analyser)
       })
       .catch((err) => console.log('The following error occurred: ' + err))
-  }, [bgColor, barColor])
+  }, [bgColor, barColor, barAlign])
 
   const draw = (analyser: AnalyserNode) => {
     if (canvasRef.current) {
@@ -63,7 +64,13 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
           barHeight = (frequencyData[i] / 255) * height
 
           ctx.fillStyle = barColor
-          ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+          if (barAlign === 'bottom') {
+            ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+          } else if (barAlign === 'top') {
+            ctx.fillRect(x, 0, barWidth, barHeight)
+          } else {
+            ctx.fillRect(x, height / 2 - barHeight / 2, barWidth, barHeight)
+          }
 
           x += barWidth
         }
