@@ -3,11 +3,11 @@ import styles from './AudioVisualizer.module.css'
 import { AudioVisualizerProps } from './AudioVisualizer.types'
 
 const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
+  mode = 'bars',
   bgColor = '#fff',
   barColor = '#000',
   width = '100%',
   height = '100%',
-  barAlign = 'bottom',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -40,7 +40,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
         draw(analyser)
       })
       .catch((err) => console.log('The following error occurred: ' + err))
-  }, [bgColor, barColor, barAlign])
+  }, [mode, bgColor, barColor])
 
   const draw = (analyser: AnalyserNode) => {
     if (canvasRef.current) {
@@ -64,14 +64,20 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
           barHeight = (frequencyData[i] / 255) * height
 
           ctx.fillStyle = barColor
-          if (barAlign === 'bottom') {
-            ctx.fillRect(x, height - barHeight, barWidth, barHeight)
-          } else if (barAlign === 'top') {
-            ctx.fillRect(x, 0, barWidth, barHeight)
-          } else {
-            ctx.fillRect(x, height / 2 - barHeight / 2, barWidth, barHeight)
-          }
 
+          if (mode === 'bars') {
+            ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+          } else if (mode === 'grid') {
+            const gridHeight = 10
+            for (let j = 0; j < barHeight / gridHeight; j++) {
+              ctx.fillRect(x, height - gridHeight * (j + 1), barWidth, gridHeight)
+              ctx.strokeStyle = bgColor
+              ctx.beginPath()
+              ctx.moveTo(x, height - gridHeight * (j + 1))
+              ctx.lineTo(x + barWidth, height - gridHeight * (j + 1))
+              ctx.stroke()
+            }
+          }
           x += barWidth
         }
 

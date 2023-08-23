@@ -6,6 +6,13 @@ const meta: Meta<typeof AudioVisualizer> = {
   component: AudioVisualizer,
   tags: ['autodocs'],
   argTypes: {
+    mode: {
+      description: 'Mode of the visualizer',
+      options: ['bars', 'grid'],
+      control: {
+        type: 'select',
+      },
+    },
     bgColor: {
       description: 'Background color of the container',
       control: 'color',
@@ -22,12 +29,6 @@ const meta: Meta<typeof AudioVisualizer> = {
       description: 'Height of the container',
       control: 'text',
     },
-    barAlign: {
-      description: 'Align the bars to the top, center, or bottom of the container (default: bottom)',
-      defaultValue: 'bottom',
-      options: ['top', 'center', 'bottom'],
-      control: { type: 'radio' },
-    },
   },
 }
 export default meta
@@ -35,8 +36,8 @@ type Story = StoryObj<typeof AudioVisualizer>
 
 export const Default: Story = {
   args: {
+    mode: 'bars',
     height: '100px',
     width: '100%',
-    barAlign: 'bottom',
   },
 }
