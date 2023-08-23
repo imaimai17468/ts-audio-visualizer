@@ -70,7 +70,12 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
           } else if (mode === 'grid') {
             const gridHeight = 10
             for (let j = 0; j < barHeight / gridHeight; j++) {
-              ctx.fillRect(x, height - gridHeight * (j + 1), barWidth, gridHeight)
+              ctx.fillRect(
+                x,
+                height - gridHeight * (j + 1),
+                barWidth,
+                gridHeight,
+              )
               ctx.strokeStyle = bgColor
               ctx.beginPath()
               ctx.moveTo(x, height - gridHeight * (j + 1))
@@ -79,6 +84,21 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
             }
           }
           x += barWidth
+        }
+
+        if (mode === 'wave') {
+          ctx.beginPath()
+          ctx.moveTo(0, height)
+          for (let i = 0; i < frequencyData.length; i++) {
+            ctx.lineTo(
+              (i / frequencyData.length) * width,
+              height - (frequencyData[i] / 255) * height,
+            )
+          }
+          ctx.lineTo(width, height)
+          ctx.closePath()
+          ctx.fillStyle = barColor
+          ctx.fill()
         }
 
         requestAnimationFrame(() => draw(analyser))

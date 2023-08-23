@@ -8,7 +8,7 @@ const meta: Meta<typeof AudioVisualizer> = {
   argTypes: {
     mode: {
       description: 'Mode of the visualizer',
-      options: ['bars', 'grid'],
+      options: ['bars', 'grid', 'wave'],
       control: {
         type: 'select',
       },
