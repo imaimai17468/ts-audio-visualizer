@@ -1,5 +1,7 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import AudioVisualizer from './AudioVisualizer'
+import { AudioVisualizerSample } from './_sample'
 
 const meta: Meta<typeof AudioVisualizer> = {
   title: 'common/AudioVisualizer',
@@ -40,4 +42,10 @@ export const Default: Story = {
     height: '100px',
     width: '100%',
   },
+}
+
+export const Sample: Story = {
+  render: () => (
+    <AudioVisualizerSample />
+  ),
 }
