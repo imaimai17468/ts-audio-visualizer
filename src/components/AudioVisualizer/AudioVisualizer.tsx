@@ -1,7 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './AudioVisualizer.module.css'
+import { AudioVisualizerProps } from './AudioVisualizer.types'
 
-const AudioVisualizer = () => {
+const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
+  mode = 'bars',
+  bgColor = '#fff',
+  barColor = '#000',
+  width = '100%',
+  height = '100%',
+}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -33,7 +40,7 @@ const AudioVisualizer = () => {
         draw(analyser)
       })
       .catch((err) => console.log('The following error occurred: ' + err))
-  }, [])
+  }, [mode, bgColor, barColor])
 
   const draw = (analyser: AnalyserNode) => {
     if (canvasRef.current) {
@@ -46,7 +53,8 @@ const AudioVisualizer = () => {
         const width = canvas.width
         const height = canvas.height
 
-        ctx.clearRect(0, 0, width, height)
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, width, height)
 
         const barWidth = width / frequencyData.length
         let barHeight
@@ -55,10 +63,42 @@ const AudioVisualizer = () => {
         for (let i = 0; i < frequencyData.length; i++) {
           barHeight = (frequencyData[i] / 255) * height
 
-          ctx.fillStyle = '#233E71'
-          ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+          ctx.fillStyle = barColor
 
+          if (mode === 'bars') {
+            ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+          } else if (mode === 'grid') {
+            const gridHeight = 10
+            for (let j = 0; j < barHeight / gridHeight; j++) {
+              ctx.fillRect(
+                x,
+                height - gridHeight * (j + 1),
+                barWidth,
+                gridHeight,
+              )
+              ctx.strokeStyle = bgColor
+              ctx.beginPath()
+              ctx.moveTo(x, height - gridHeight * (j + 1))
+              ctx.lineTo(x + barWidth, height - gridHeight * (j + 1))
+              ctx.stroke()
+            }
+          }
           x += barWidth
+        }
+
+        if (mode === 'wave') {
+          ctx.beginPath()
+          ctx.moveTo(0, height)
+          for (let i = 0; i < frequencyData.length; i++) {
+            ctx.lineTo(
+              (i / frequencyData.length) * width,
+              height - (frequencyData[i] / 255) * height,
+            )
+          }
+          ctx.lineTo(width, height)
+          ctx.closePath()
+          ctx.fillStyle = barColor
+          ctx.fill()
         }
 
         requestAnimationFrame(() => draw(analyser))
@@ -67,7 +107,7 @@ const AudioVisualizer = () => {
   }
 
   return (
-    <div ref={containerRef} className={styles.root}>
+    <div ref={containerRef} className={styles.root} style={{ width, height }}>
       <canvas ref={canvasRef}></canvas>
     </div>
   )

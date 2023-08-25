@@ -1,31 +1,51 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import AudioVisualizer from './AudioVisualizer'
-import styles from './AudioVisualizer.module.css'
+import { AudioVisualizerSample } from './_sample'
 
 const meta: Meta<typeof AudioVisualizer> = {
   title: 'common/AudioVisualizer',
   component: AudioVisualizer,
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    mode: {
+      description: 'Mode of the visualizer',
+      options: ['bars', 'grid', 'wave'],
+      control: {
+        type: 'select',
+      },
+    },
+    bgColor: {
+      description: 'Background color of the container',
+      control: 'color',
+    },
+    barColor: {
+      description: 'Color of the bars',
+      control: 'color',
+    },
+    width: {
+      description: 'Width of the container',
+      control: 'text',
+    },
+    height: {
+      description: 'Height of the container',
+      control: 'text',
+    },
+  },
 }
 export default meta
 type Story = StoryObj<typeof AudioVisualizer>
 
 export const Default: Story = {
-  args: {},
-  render: () => (
-    <div className={styles['story-container-full']}>
-      <AudioVisualizer />
-    </div>
-  ),
+  args: {
+    mode: 'bars',
+    height: '100px',
+    width: '100%',
+  },
 }
 
-export const FixedWidth: Story = {
-  args: {},
+export const Sample: Story = {
   render: () => (
-    <div className={styles['story-container']}>
-      <AudioVisualizer />
-    </div>
+    <AudioVisualizerSample />
   ),
 }
