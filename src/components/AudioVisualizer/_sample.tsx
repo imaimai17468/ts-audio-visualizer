@@ -16,15 +16,15 @@ return (
       mode="grid"
       height="100px"
       width="50%"
-      bgColor="#efdddd"
-      barColor="#ddefef"
+      bgColor="#efcccc"
+      barColor="#ccefef"
     />
     <AudioVisualizer
       mode="wave"
       height="100px"
       width="50%"
-      bgColor="#ddefdd"
-      barColor="#ddddef"
+      bgColor="#ccefcc"
+      barColor="#ccccef"
     />
   </div>
 )
