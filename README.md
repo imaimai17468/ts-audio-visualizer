@@ -2,6 +2,8 @@
 
 [![][license]][license-url] [![][stars]][gh-url] [![][commit]][gh-url]
 
+![画面収録-2023-08-26-14 23 36](https://github.com/imaimai17468/ts-audio-visualizer/assets/52590941/378d2834-8b52-4a06-8fbb-d330be441f74)
+
 ## 💐 Features
 
 - Microphone audio converted to graphs
