@@ -54,6 +54,13 @@
     "types",
     "dist"
   ],
+  "keywords": [
+    "react",
+    "typescript",
+    "audio",
+    "visualizer",
+    "microphone"
+  ],
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --ext ts,tsx .",
