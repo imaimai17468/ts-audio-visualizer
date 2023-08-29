@@ -1,6 +1,9 @@
 # ts-audio-visualizer
 
-[![][license]][license-url] [![][stars]][gh-url] [![][commit]][gh-url]
+[![](https://img.shields.io/static/v1?label=imaimai17468&message=ts-audio-visualizer&color=blue&logo=github)](https://github.com/imaimai17468/ts-audio-visualizer "Go to GitHub repo")
+[![](https://img.shields.io/github/stars/imaimai17468/ts-audio-visualizer?style=social)](https://github.com/imaimai17468/ts-audio-visualizer)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![][dl]][npm-url]
 
 ![画面収録-2023-08-26-14 23 36](https://github.com/imaimai17468/ts-audio-visualizer/assets/52590941/378d2834-8b52-4a06-8fbb-d330be441f74)
 
@@ -55,8 +58,6 @@ yarn add ts-audio-visualizer
 
 [tweet-url]: https://twitter.com/intent/tweet?text=ts-audio-visualizer%20%0D%0Ahttps://github.com/imaimai17468/ts-audio-visualizer
 [tweet]: https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fimaimai17468%2Fts-audio-visualizer
-[license]: https://badgen.net/github/license/imaimai17468/ts-audio-visualizer?color=green
-[license-url]: https://github.com/imaimai17468/ts-audio-visualizer/blob/master/LICENSE
-[stars]: https://badgen.net/github/stars/imaimai17468/ts-audio-visualizer?color=green
-[gh-url]: https://github.com/imaimai17468/ts-audio-visualizer
-[commit]: https://badgen.net/github/last-commit/imaimai17468/ts-audio-visualizer?icon=github&color=green
+[dl]: https://badgen.net/npm/dt/ts-audio-visualizer?label=installs&icon=npm&color=green
+[npm-url]: https://www.npmjs.com/package/ts-audio-visualizer
+[starts]: https://img.shields.io/github/stars/imaimai17468/ts-audio-visualizer?style=social
