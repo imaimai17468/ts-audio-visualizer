@@ -1,6 +1,6 @@
 {
   "name": "ts-audio-visualizer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "author": "imaimai17468 <tosiki_801_life@outlook.jp> (https://github.com/imaimai17468/)",
