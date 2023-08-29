@@ -1,6 +1,6 @@
 {
   "name": "ts-audio-visualizer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "author": "imaimai17468 <tosiki_801_life@outlook.jp> (https://github.com/imaimai17468/)",
@@ -62,9 +62,15 @@
   "keywords": [
     "react",
     "typescript",
+    "ts",
     "audio",
     "visualizer",
-    "microphone"
+    "microphone",
+    "visualize",
+    "waveform",
+    "visualization",
+    "live",
+    "realtime"
   ],
   "scripts": {
     "build": "rollup -c",
